@@ -11,13 +11,14 @@ Baking lightmaps into prefabs can be a major optimization for mobile and VR runt
 
 # How to use it
 - Tested with Unity 2018.2.6f1
- - Unknown if it will work in other versions.
+  - Unknown if it will work in other versions.
+  
 
 - Add PrefabLightmapData.cs to the top level of a prefab.
- - Prefab must be have all Static flags except Batching Static.
+  - Prefab must be have all Static flags except Batching Static.
 - Put the prefab in a scene and bake a non-directional lightmap.
- - Bake scene should have the same Lighting settings as the scene you intent to instantiate the prefab into.
- - Bake scene must have auto baking off.
- - Bake scene must be included in the build scenes list.
+  - Bake scene should have the same Lighting settings as the scene you intent to instantiate the prefab into.
+  - Bake scene must have auto baking off.
+  - Bake scene must be included in the build scenes list.
 - Still in the bake scene, run _Assets > Bake Prefab Lightmaps_
 - Instantiate the prefab at runtime in any scene you want.

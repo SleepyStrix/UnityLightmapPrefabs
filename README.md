@@ -10,6 +10,9 @@ The goal is to make something more organized and robust out of it.
 Baking lightmaps into prefabs can be a major optimization for mobile and VR runtime procedural environments.
 
 # How to use it
+- Tested with Unity 2018.2.6f1
+ - Unknown if it will work in other versions.
+
 - Add PrefabLightmapData.cs to the top level of a prefab.
  - Prefab must be have all Static flags except Batching Static.
 - Put the prefab in a scene and bake a non-directional lightmap.

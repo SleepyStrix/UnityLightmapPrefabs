@@ -24,10 +24,18 @@ Baking lightmaps into prefabs can be a major optimization for mobile and VR runt
 - Instantiate the prefab at runtime in any scene you want.
 
 ## Lighting Dynamic objects like characters
-This system can preserve baked lighmaps, but does not yet preserve light probes for dynamic objects.
+This system can preserve baked lighmaps, but does not yet preserve light probes for dynamic objects. Instead, the functionality of light probes is approximated with a component and a shader.
 
-- There is an included script that can sample lightmapped objects underneath an object to determine light color and intensity.
+- DynamicLitFromBaked.cs can sample lightmapped objects underneath an object to determine light color and intensity.
   - Requires lightmaps be read/write enabled
   - Requires sampled objects to have meshcolliders
-  - Works with the included DynamicLit shader
   - Only recommended for smallish moving objects like humans.
+  - Feeds light color/intensity to DynamicLit shader.
+- DynamicLit shader
+  - Simplified PBR
+  - Takes a color with alpha intensity
+  - Approximates light probe functionality
+- Scene setup
+  - Add a white, 1 intensity directional light
+  - Culling masked to only affect DynamicLit GameObjects.
+  - Not 100% necessary, but important for shading quality

@@ -1,5 +1,5 @@
 # UnityLightmapPrefabs
-Lightmapping Prefabs in Unity
+Lightmapping Prefabs in Unity 2018
 
 # What is this?
 My fork of Joachim Ante's solution for attaching lightmaps to runtime instantiated prefabs in Unity 5+, posted on the Unity forums here: https://forum.unity.com/threads/problems-with-instantiating-baked-prefabs.324514/

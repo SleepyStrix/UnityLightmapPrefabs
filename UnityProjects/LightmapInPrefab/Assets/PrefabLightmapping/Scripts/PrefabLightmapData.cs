@@ -19,8 +19,13 @@ public class PrefabLightmapData : MonoBehaviour
 
 	void Awake ()
 	{
+        Debug.Log("PrefabLightMapData Awake");
 		if (m_RendererInfo == null || m_RendererInfo.Length == 0)
-			return;
+        {
+            Debug.Log("PrefabLightMapData not applying, no RendererInfo");
+            return;
+        }
+
 
 		var lightmaps = LightmapSettings.lightmaps;
 		var combinedLightmaps = new LightmapData[lightmaps.Length + m_Lightmaps.Length];
@@ -34,6 +39,7 @@ public class PrefabLightmapData : MonoBehaviour
 
 		ApplyRendererInfo(m_RendererInfo, lightmaps.Length);
 		LightmapSettings.lightmaps = combinedLightmaps;
+        Debug.Log("Lightmaps array length: " + LightmapSettings.lightmaps.Length);
 	}
 
 	
@@ -41,7 +47,7 @@ public class PrefabLightmapData : MonoBehaviour
 	{
 		for (int i=0;i<infos.Length;i++)
 		{
-			var info = infos[i];
+            var info = infos[i];
 			info.renderer.lightmapIndex = info.lightmapIndex + lightmapOffsetIndex;
 			info.renderer.lightmapScaleOffset = info.lightmapOffsetScale;
 		}

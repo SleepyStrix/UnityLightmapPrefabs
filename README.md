@@ -1,5 +1,5 @@
 # UnityLightmapPrefabs
-Lightmapping Prefabs in Unity
+Lightmapping Prefabs in Unity 2018
 
 # What is this?
 My fork of Joachim Ante's solution for attaching lightmaps to runtime instantiated prefabs in Unity 5+, posted on the Unity forums here: https://forum.unity.com/threads/problems-with-instantiating-baked-prefabs.324514/
@@ -22,3 +22,22 @@ Baking lightmaps into prefabs can be a major optimization for mobile and VR runt
   - Bake scene must be included in the build scenes list.
 - Still in the bake scene, run _Assets > Bake Prefab Lightmaps_
 - Instantiate the prefab at runtime in any scene you want.
+
+## Lighting Dynamic objects like characters
+New feature not in original package.
+
+This system can preserve baked lighmaps, but does not yet preserve light probes for dynamic objects. Instead, the functionality of light probes is approximated with a component and a shader.
+
+- DynamicLitFromBaked.cs can sample lightmapped objects underneath an object to determine light color and intensity.
+  - Requires lightmaps be read/write enabled
+  - Requires sampled objects to have meshcolliders
+  - Only recommended for smallish moving objects like humans.
+  - Feeds light color/intensity to DynamicLit shader.
+- DynamicLit shader
+  - Simplified PBR
+  - Takes a color with alpha intensity
+  - Approximates light probe functionality
+- Scene setup
+  - Add a white, 1 intensity directional light
+  - Culling masked to only affect DynamicLit GameObjects.
+  - Not 100% necessary, but important for shading quality

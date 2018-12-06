@@ -56,9 +56,29 @@ public class DynamicLitFromBaked : MonoBehaviour {
         }
     }
 
+    public float valueMultiplier = 3f;
+    public float saturationMultiplier = 0.5f;
+
     void ApplyColor()
     {
         rend.material.SetColor("_LightColor", sampledColorFromLightmap);
+        return;
+        /*//new stuff
+
+        float h;
+        float s;
+        float v;
+        Color.RGBToHSV(sampledColorFromLightmap, out h, out s, out v);
+        //v = Mathf.Clamp01(Mathf.Pow(v, 1f - v));
+        s *= saturationMultiplier;
+        v *= valueMultiplier;
+        v = Mathf.Clamp01(v);
+        //v = Mathf.Max(v, 0.25f);
+
+        Color revised = Color.HSVToRGB(h, s, v); //max value
+        //rend.material.SetColor("_LightColor", revised);
+        rend.material.SetColor("_MainColor", revised);
+        */
     }
 }
 
